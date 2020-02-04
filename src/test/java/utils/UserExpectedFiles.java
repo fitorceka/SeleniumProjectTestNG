@@ -2,8 +2,8 @@ package utils;
 
 public class UserExpectedFiles {
 
-    public static String userEmail = "fitorceka5@gmail.com";
-    public static String userPassword = "87654321";
+    public static String userEmail = "boby.smith@gmail.com";
+    public static String userPassword = "654321";
     public static String searchContent = "iPhone11";
     public static String url = "https://demo.nopcommerce.com/";
     public static String textAfterLogin = "My account";
