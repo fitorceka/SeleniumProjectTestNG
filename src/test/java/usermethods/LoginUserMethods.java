@@ -8,13 +8,11 @@ import utils.Waits;
 
 public class LoginUserMethods {
 
-    private static Driver d = Driver.getInstanceOfDriver();
-    private LoginUserElements loginUserElements;
+    private static final Driver driver = Driver.getInstanceOfDriver();
+    private final LoginUserElements loginUserElements;
 
     public LoginUserMethods() {
-
-        loginUserElements = PageFactory.initElements(d.getDriver(), LoginUserElements.class);
-
+        loginUserElements = PageFactory.initElements(driver.getDriver(), LoginUserElements.class);
     }
 
     //methods
@@ -22,39 +20,34 @@ public class LoginUserMethods {
 
         String userEmail = UserExpectedFiles.userEmail;
         String userPassword = UserExpectedFiles.userPassword;
-        loginUserElements.loginButton.click();
+        loginUserElements.clickLogIn();
+
         Waits.waitForElementToBeClickableAndClick(loginUserElements.userEmailBox);
         Thread.sleep(1000);
-        loginUserElements.userEmailBox.sendKeys(userEmail);
-        Waits.waitForElementToBeClickableAndClick(loginUserElements.userPasswordBox);
-        loginUserElements.userPasswordBox.sendKeys(userPassword);
-        Waits.waitForElementToBeClickableAndClick(loginUserElements.login);
 
+        loginUserElements.insertUserEmail(userEmail);
+        Waits.waitForElementToBeClickableAndClick(loginUserElements.userPasswordBox);
+
+        loginUserElements.insertUserPassword(userPassword);
+        Waits.waitForElementToBeClickableAndClick(loginUserElements.login);
     }
 
     public String getTextOfAccountAfterLogin() {
-
-        String text = loginUserElements.accountAfterLogin.getText();
-        return text;
-
+        return loginUserElements.fetchAccountTextAfterLogin();
     }
 
     public void logoutAsUser() throws InterruptedException {
-
-        loginUserElements.goToHome.click();
+        loginUserElements.clickGoToHome();
         Waits.waitForElementToBeVisible(loginUserElements.logoutButton);
         Thread.sleep(1000);
         Waits.waitForElementToBeClickableAndClick(loginUserElements.logoutButton);
-
     }
 
     //for product that is not available in the store
     public String productNotAvailable() {
-
-        loginUserElements.searchBoxOfItems.sendKeys(UserExpectedFiles.searchContent);
-        loginUserElements.searchButtonOfItems.click();
+        loginUserElements.insertValueInSearchBoxOfItems(UserExpectedFiles.searchContent);
+        loginUserElements.clickSearchItemsButton();
         Waits.waitForElementToBeVisible(loginUserElements.productNotAvailableText);
-        return loginUserElements.productNotAvailableText.getText();
-
+        return loginUserElements.fetchProductNotAvailableText();
     }
 }

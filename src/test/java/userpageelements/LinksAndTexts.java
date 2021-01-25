@@ -17,4 +17,11 @@ public class LinksAndTexts {
     @FindBy(how = How.CSS, using = "#flyout-cart div div")
     public WebElement emptyShoppingCartText;
 
+    public String fetchEmptyShoppingCartText() {
+        return emptyShoppingCartText.getText();
+    }
+
+    public int fetchFooterLinksSize() {
+        return footerLinks.size();
+    }
 }

@@ -37,4 +37,35 @@ public class LoginUserElements {
     @FindBy(how = How.CSS, using = ".ico-logout")
     public WebElement logoutButton;
 
+    public void clickLogIn() {
+        loginButton.click();
+    }
+
+    public void insertUserEmail(String email) {
+        userEmailBox.sendKeys(email);
+    }
+
+    public void insertUserPassword(String password) {
+        userPasswordBox.sendKeys(password);
+    }
+
+    public void clickGoToHome() {
+        goToHome.click();
+    }
+
+    public void insertValueInSearchBoxOfItems(String value) {
+        searchBoxOfItems.sendKeys(value);
+    }
+
+    public String fetchProductNotAvailableText() {
+        return productNotAvailableText.getText();
+    }
+
+    public String fetchAccountTextAfterLogin() {
+        return accountAfterLogin.getText();
+    }
+
+    public void clickSearchItemsButton() {
+        searchButtonOfItems.click();
+    }
 }

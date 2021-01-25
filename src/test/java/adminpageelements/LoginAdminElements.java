@@ -25,4 +25,11 @@ public class LoginAdminElements {
     @FindBy(how = How.CSS, using = ".logo-lg")
     public WebElement goToHomeLogo;
 
+    public String fetchAdminEmailText() {
+        return adminEmailInputBox.getAttribute("value");
+    }
+
+    public String fetchAdminNameText() {
+        return adminFullNameAfterLogin.getText();
+    }
 }

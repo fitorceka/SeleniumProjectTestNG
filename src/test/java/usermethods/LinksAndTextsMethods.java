@@ -8,28 +8,22 @@ import utils.Waits;
 
 public class LinksAndTextsMethods {
 
-    private static Driver d = Driver.getInstanceOfDriver();
-    private LinksAndTexts linksAndTexts;
+    private static final Driver driver = Driver.getInstanceOfDriver();
+    private final LinksAndTexts linksAndTexts;
 
     public LinksAndTextsMethods() {
-
-        linksAndTexts = PageFactory.initElements(d.getDriver(), LinksAndTexts.class);
-
+        linksAndTexts = PageFactory.initElements(driver.getDriver(), LinksAndTexts.class);
     }
 
     //methods
     public int footerLinks() {
-
-        return linksAndTexts.footerLinks.size();
-
+        return linksAndTexts.fetchFooterLinksSize();
     }
 
     //shopping cart that has no products in it.
     public String emptyShoppingCart() {
-
         ActionsClass.mouseOnElement(linksAndTexts.shoppingCart);
         Waits.waitForElementToBeVisible(linksAndTexts.emptyShoppingCartText);
-        return linksAndTexts.emptyShoppingCartText.getText();
-
+        return linksAndTexts.fetchEmptyShoppingCartText();
     }
 }

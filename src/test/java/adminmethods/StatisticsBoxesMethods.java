@@ -8,12 +8,12 @@ import utils.Waits;
 
 public class StatisticsBoxesMethods {
 
-    private static Driver d = Driver.getInstanceOfDriver();
-    private StatisticsBoxes statisticsBoxes;
+    private static final Driver driver = Driver.getInstanceOfDriver();
+    private final StatisticsBoxes statisticsBoxes;
 
     public StatisticsBoxesMethods() {
 
-        statisticsBoxes = PageFactory.initElements(d.getDriver(), StatisticsBoxes.class);
+        statisticsBoxes = PageFactory.initElements(driver.getDriver(), StatisticsBoxes.class);
 
     }
 
@@ -31,26 +31,28 @@ public class StatisticsBoxesMethods {
             //array with true values
             displayTests[i] = element.isDisplayed();
         }
-        return displayTests;
 
+        return displayTests;
     }
 
     //collapse all statistics boxes
     public boolean[] collapseStatisticsBoxes() {
 
         boolean[] displayTests = new boolean[statisticsBoxes.statisticsBoxContainers.size()];
+
         for (int i = 0; i<statisticsBoxes.dynamicCollapseExpand.size(); i++) {
             WebElement element = statisticsBoxes.dynamicCollapseExpand.get(i);
             element.click();
             Waits.waitForElementToBeInvisible(statisticsBoxes.statisticsBoxContainers.get(i));
         }
+
         for (int i=0; i<statisticsBoxes.dynamicCollapseExpand.size(); i++) {
             WebElement element = statisticsBoxes.statisticsBoxContainers.get(i);
             if(!element.isDisplayed()) {
                 displayTests[i] = element.isDisplayed();
             }
         }
-        return displayTests;
 
+        return displayTests;
     }
 }

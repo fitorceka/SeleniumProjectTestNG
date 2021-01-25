@@ -11,10 +11,10 @@ import java.util.concurrent.TimeUnit;
 public class Driver {
 
     private static Driver instanceOfDriver = null;
-    private WebDriver driver;
-    private WebDriverWait wait;
-    private Actions actions;
-    private TakesScreenshot screenshot;
+    private final WebDriver driver;
+    private final WebDriverWait wait;
+    private final Actions actions;
+    private final TakesScreenshot screenshot;
 
     private Driver() {
 
