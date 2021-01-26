@@ -5,7 +5,6 @@ import org.testng.annotations.*;
 import usermethods.LinksAndTextsMethods;
 import usermethods.LoginUserMethods;
 import usermethods.ShoppingCartMethods;
-import utils.Driver;
 import utils.UserExpectedFiles;
 
 @Listeners(utils.Listeners.class)

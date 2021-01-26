@@ -19,7 +19,7 @@ public class LoginUserElements {
     @FindBy(how = How.ID, using = "Password")
     public WebElement userPasswordBox;
 
-    @FindBy(how = How.CSS, using = "input.button-1.login-button")
+    @FindBy(how = How.XPATH, using = "//input[@class='button-1 login-button']")
     public WebElement login;
 
     @FindBy(how = How.CSS, using = "a.ico-account")
@@ -39,6 +39,10 @@ public class LoginUserElements {
 
     public void clickLogIn() {
         loginButton.click();
+    }
+
+    public void clickLogInAfterEnteringCredentials() {
+        login.click();
     }
 
     public void insertUserEmail(String email) {

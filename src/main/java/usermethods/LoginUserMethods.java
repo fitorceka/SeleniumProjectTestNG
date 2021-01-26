@@ -26,10 +26,12 @@ public class LoginUserMethods {
         Thread.sleep(1000);
 
         loginUserElements.insertUserEmail(userEmail);
+
         Waits.waitForElementToBeClickableAndClick(loginUserElements.userPasswordBox);
 
         loginUserElements.insertUserPassword(userPassword);
-        Waits.waitForElementToBeClickableAndClick(loginUserElements.login);
+        Thread.sleep(1000);
+        loginUserElements.clickLogInAfterEnteringCredentials();
     }
 
     public String getTextOfAccountAfterLogin() {
